@@ -12,7 +12,7 @@ function preload()
 }
 
 function setup() {
-	createCanvas(800, 600);
+	createCanvas(800, 700);
 	rectMode(CENTER);
 	
 
@@ -31,7 +31,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:3, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.4, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -48,28 +48,16 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
-  
-
-
-  KeyPressed();
-
+  packageSprite.x= packageBody.position.x 
+  packageSprite.y= packageBody.position.y 
   drawSprites();
  
 }
 
-function KeyPressed() {
+function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-
-	Matter.body.setStatic(packageBody,false);
-
-	packageSprite.velocityY = -2;
-
-	packageSprite.x = packageBody.position.x
-	packageSprite.y = packageBody.position.y
-
-	this.scale = 1;
+    Matter.Body.setStatic(packageBody,false);
+    
   }
 }
-
-
-
+© 2020 GitHub, Inc.
